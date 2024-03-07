@@ -1,0 +1,19 @@
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates three columns of equal width */
+    gap: 20px; /* Adjust the gap between columns as needed */
+  }
+  
+  .first-column,
+  .second-column,
+  .third-column {
+    display: flex;
+    flex-direction: column;
+  } 
+  
+  @media (max-width: 768px) {
+    .form-container {
+      grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
+    }
+  }
+  
