@@ -165,6 +165,7 @@ export default function ListLoanManeger() {
                     ms.current.toggle(e)
                 }
                 else
+                
                 {
                     setVisible(true)
                     setMsText("אין אפשרות להחזיר הלוואה שלא נלקחה")
