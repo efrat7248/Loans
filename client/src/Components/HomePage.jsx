@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { Fieldset } from 'primereact/fieldset';
 
@@ -25,3 +26,18 @@ export default function BasicDemo() {
     )
 }
         
+=======
+import Register from "../features/auth/Register";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+
+
+const HomePage = () => {  
+    const navigate = useNavigate()
+    return(
+        <>
+       {navigate("/login")}
+       </>
+    )
+}
+export default HomePage;
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a

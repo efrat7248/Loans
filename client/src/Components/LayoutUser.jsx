@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useRef, useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import { Badge } from 'primereact/badge';
@@ -14,6 +18,7 @@ import { removeToken } from "../features/auth/authSlice"
 import { NavLink, useNavigate } from "react-router-dom"
 import {  useDispatch } from "react-redux"
 import apiSlice from "../App/apiSlice"
+<<<<<<< HEAD
 import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
 import { Toast } from 'primereact/toast';
 import styled from "styled-components";
@@ -28,6 +33,8 @@ const StyledFooter = styled.footer`
   bottom: 0;
   width: 100%;
 `;
+=======
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
 
 export default function LayoutUser() {
 const dispatch = useDispatch()
@@ -59,6 +66,7 @@ const navigate = useNavigate()
         },
         {
             label: 'About & Contant',
+<<<<<<< HEAD
             icon: 'pi pi-home',
             url:'/layoutUser/about'
 
@@ -68,11 +76,23 @@ const navigate = useNavigate()
     const toast = useRef(null);
     const buttonEl = useRef(null);
 
+=======
+            icon: 'pi pi-home'
+        },
+        // {
+        //     label: 'Contact',
+        //     icon: 'pi pi-envelope',
+        //     badge: 3,
+        //     template: itemRenderer
+        // }
+    ];
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
     const handleLogoutClick = () =>{
         dispatch(removeToken())
         dispatch(apiSlice.util.resetApiState())
         navigate("/")
     }
+<<<<<<< HEAD
     const start = <img alt="logo" src="http://localhost:1300/logo.png" height="40" className="mr-2"></img>;
     const end = (
         <div className="flex align-items-center gap-2">
@@ -80,6 +100,12 @@ const navigate = useNavigate()
             <ConfirmPopup target={buttonEl.current} visible={visible} onHide={() => setVisible(false)} 
                 message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle" accept={handleLogoutClick} />
             <Button ref={buttonEl}label='logout' className="w-8rem sm:w-auto" icon='pi pi-sign-out'onClick={()=>setVisible(true)} />
+=======
+    const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
+    const end = (
+        <div className="flex align-items-center gap-2">
+            <Button label='logout' className="w-8rem sm:w-auto" icon='pi pi-sign-out'onClick={handleLogoutClick} />
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
           
         </div>
     );
@@ -89,6 +115,7 @@ const navigate = useNavigate()
         <div className="card">
             <Menubar model={items} start={start} end={end} />
         </div>
+<<<<<<< HEAD
         
         <Outlet/>
       
@@ -98,6 +125,9 @@ const navigate = useNavigate()
           <p>TiferetShlomo@gmail.com גמ"ח תפארת שלמה </p>
         </div>
       </StyledFooter>
+=======
+        <Outlet/>
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
         </>
     )
 }

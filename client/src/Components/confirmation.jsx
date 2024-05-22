@@ -14,6 +14,22 @@ export default function Confirmation({ func, id, nameAction }) {
         toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
     };
 
+<<<<<<< HEAD
+=======
+    // const confirm1 = () => {
+    //     confirmDialog({
+    //         group: 'headless',
+    //         mahmut: 'mahmut',
+    //         message: text,
+    //         header: 'Delete Confirmation',
+    //         icon: 'pi pi-exclamation-triangle',
+    //         defaultFocus: 'accept',
+    //         accept,
+    //         reject
+    //     });
+    // };
+
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
     return (
         <>
             <Toast ref={toast} />
@@ -34,11 +50,19 @@ export default function Confirmation({ func, id, nameAction }) {
                             <Button
                                 label="Yes"
                                 onClick={(event) => {
+<<<<<<< HEAD
                                     hide(event);
                                     if(nameAction)
                                     func(nameAction ,id )
                                     else
                                     func(id)
+=======
+                                    hide(event); 
+                                    if(nameAction)
+                                    func(nameAction ,id )
+                                    else
+                                    func(id )
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
                                     accept();
                                 }}
                                 className="w-8rem"
@@ -56,6 +80,12 @@ export default function Confirmation({ func, id, nameAction }) {
                     </div>
                 )}
             />
+<<<<<<< HEAD
+=======
+            {/* <div className="card flex flex-wrap gap-2 justify-content-center">
+                <Button onClick={confirm1} icon="pi pi-check" label="Confirm"></Button>
+            </div> */}
+>>>>>>> d59ca7aa569824bdeb372f16d324a0ded60c3b3a
         </>
     )
 }

@@ -14,6 +14,7 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static("public"))
    
+
 app.get('/uploads/:filename', (req, res) => {
     console.log(req.params.filename);
     const imagePath = path.join(__dirname, '/public/upload/', req.params.filename);

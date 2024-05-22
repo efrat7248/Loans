@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLoginMutation } from './authApiSlice';
 import { setToken } from './authSlice';
 import { useDispatch } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
@@ -61,6 +61,7 @@ export default function Login() {
     };
     
     return (
+
         <>
 <div style={{"background":"url(./111.jpg)","height":"900px","backgroundRepeat":"repeat-y", "backgroundSize":"cover"}}>
         <div  style={{textAlign:"center"}}>
@@ -70,15 +71,18 @@ export default function Login() {
              <Button label="Register" icon="pi pi-user-plus" onClick={() => setVisibleReg(true)} style={{backgroundColor:"#4D749A", borderColor:"#4D749A"}}/>
             {visibleReg?<Register visibleReg={visibleReg} setRegister={onRegister} handleOpenLogin={handleOpenLogin} role='user'></Register>:<></>}
           
+
             <Dialog
 
                 visible={visible}
                 modal
                 onHide={() => setVisible(false)}
                 content={({ hide }) => (
+
                     <div className="flex flex-column px-8 py-5 gap-4" style={{ borderRadius: '12px', backgroundImage: 'radial-gradient(circle at left top)' }}>
 
                         <Button label="Login" icon="pi pi-user" style={{backgroundColor:"#4D749A", borderColor:"#4D749A"}}/>
+
                         <div className="inline-flex flex-column gap-2">
                             <div className="card flex justify-content-center">
                                 <form onSubmit={handleSubmit(onSubmitLogin)} className="flex flex-column gap-2">
@@ -128,8 +132,10 @@ export default function Login() {
                                             </>
                                         )}
                                     />
+
                                     <Button label="Sign-In" type="submit" style={{backgroundColor:"#4D749A", borderColor:"#4D749A"}}/>
                                     <Button label="Cancel" type="submit" onClick={(e) => hide(e)} style={{backgroundColor:"#4D749A", borderColor:"#4D749A"}} ></Button>
+
                                 </form>
                             </div>
                         </div>
@@ -137,7 +143,9 @@ export default function Login() {
                 )}
             ></Dialog>
         </div>
+
         </div>
         </>
+
     )
 }

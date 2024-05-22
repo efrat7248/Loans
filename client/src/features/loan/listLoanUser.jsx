@@ -35,9 +35,9 @@ export default function ListLoanUser() {
 
     const handleDeleteLoan = async (idlo) => {
         setIdLoan(idlo)
+
         await delFunc({ idL: idlo })
     }
-
 
 
     useEffect(() => {
@@ -83,9 +83,9 @@ export default function ListLoanUser() {
         const formData = new FormData();
         formData.append('id', id);
         formData.append('Img', event.target.files[0]);
-        console.log(formData.get('Img'));
         ReturnApproval(formData)
     };
+    
     const handleViewCon=(id)=>{
         setId(id);
         confirmDialog({
@@ -106,6 +106,7 @@ export default function ListLoanUser() {
             </div> :
                 <div >
                     <input style={{}} icon='pi pi-upload' type="file" name="Img" onChange={(e) => handleFileChange(e, rowData._id)} />
+
                 </div>
             }
         </>)
@@ -120,6 +121,7 @@ export default function ListLoanUser() {
     }
 
     const weftsButtons = (rowData) => {
+
         return (
             <div>
                 <Button icon='pi pi-sort-down' onClick={() => handleOpenDialog(rowData)}></Button>

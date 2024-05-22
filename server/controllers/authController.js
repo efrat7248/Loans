@@ -22,6 +22,8 @@ const login = async (req, res) => {
         email: foundUser.email,
         phone: foundUser.phone,
         active: foundUser.active,
+
+  
         role:foundUser.role
     }
     const accessToken = jwt.sign(userInfo, process.env.ACCESS_TOKEN_SECRET)
