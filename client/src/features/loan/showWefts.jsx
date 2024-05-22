@@ -22,11 +22,18 @@ export default function ShowWefts({ setRowD, wefts, idLoan, dialogVisible, setDi
         }
     }, [valuePhone]);
 
+<<<<<<< HEAD
     const dialogFooterTemplate = () => {
         return <Button label="Ok" icon="pi pi-check" onClick={() => { setDialogVisible() }} />;
     };
     const [products, setProducts] = useState(null);
     const [statuses] = useState(['INSTOCK', 'LOWSTOCK', 'OUTOFSTOCK']);
+=======
+
+    const dialogFooterTemplate = () => {
+        return <Button label="Ok" icon="pi pi-check" onClick={() => { setDialogVisible() }} />;
+    };
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
     const [putLoanWefts, { isErrorTake, isSuccessTake }] = useUpdateLoanWeftsMutation()
 
     const validateLocalPhoneNumber = (phoneNumber) => {
@@ -106,8 +113,17 @@ modal contentStyle={{ height: '300px' }} onHide={() => setDialogVisible(false)} 
                     <Column field="phone" header="Phone" editor={(options) => phoneEditor(options)} style={{ width: '20%' }}></Column>
                     <Column field="updatedAt" header="UpdatedAt" style={{ width: '20%' }}></Column>
                     {role ? <Column rowEditor={true} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column> : null}
+<<<<<<< HEAD
+=======
+
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
                 </DataTable>
             </Dialog>
         </div>
     );
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430

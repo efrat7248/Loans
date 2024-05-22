@@ -73,6 +73,7 @@ const navigate = useNavigate()
         dispatch(apiSlice.util.resetApiState())
         navigate("/")
     }
+
     const start = <img alt="logo" src="http://localhost:1300/logo.png" height="40" className="mr-2"></img>;
     const end = (
         <div className="flex align-items-center gap-2">
@@ -89,6 +90,7 @@ const navigate = useNavigate()
         <div className="card">
             <Menubar model={items} start={start} end={end} />
         </div>
+
         
         <Outlet/>
       
@@ -98,6 +100,9 @@ const navigate = useNavigate()
           <p>TiferetShlomo@gmail.com גמ"ח תפארת שלמה </p>
         </div>
       </StyledFooter>
+
+        <Outlet/>
+
         </>
     )
 }

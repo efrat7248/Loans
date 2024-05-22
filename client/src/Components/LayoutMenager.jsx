@@ -30,6 +30,7 @@ export default function LayoutManeger() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+
     const items = [
         {
             label: 'Users',
@@ -57,6 +58,7 @@ export default function LayoutManeger() {
     const [visible, setVisible] = useState(false);
     const toast = useRef(null);
     const buttonEl = useRef(null);
+
     const handleLogoutClick = () =>{
         dispatch(removeToken())
         dispatch(apiSlice.util.resetApiState())
@@ -74,12 +76,12 @@ export default function LayoutManeger() {
     );
 
     return (
-        
         <>
         <div className="card">
             <Menubar model={items} start={start} end={end} />
         </div>
         <Outlet/>
+
         <StyledFooter >
         
         <div>

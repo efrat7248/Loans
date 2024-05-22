@@ -14,6 +14,9 @@ export default function Confirmation({ func, id, nameAction }) {
         toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
     };
 
+
+
+
     return (
         <>
             <Toast ref={toast} />
@@ -35,10 +38,10 @@ export default function Confirmation({ func, id, nameAction }) {
                                 label="Yes"
                                 onClick={(event) => {
                                     hide(event);
-                                    if(nameAction)
-                                    func(nameAction ,id )
+                                    if (nameAction)
+                                        func(nameAction, id)
                                     else
-                                    func(id)
+                                        func(id)
                                     accept();
                                 }}
                                 className="w-8rem"

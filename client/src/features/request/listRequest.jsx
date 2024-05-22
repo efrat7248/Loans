@@ -14,6 +14,8 @@ import {confirmDialog } from 'primereact/confirmdialog';
 import { InputText } from 'primereact/inputtext';
 
 
+
+
 export default function RequestList() {
     const [visible, setVisible] = useState(false);
     const [visibleLoan, setVisibleLoan] = useState(false);
@@ -22,6 +24,7 @@ export default function RequestList() {
     const [state3, setState3] = useState(false)
     const [viewConfi, setViewConfi] = useState(false)
     const [id, setId] = useState('')
+
     const [foundLoan, setFoundLoan] = useState(null)
 
     const [globalFilterValue, setGlobalFilterValue] = useState('');
@@ -47,6 +50,7 @@ export default function RequestList() {
         setFilters(_filters);
         setGlobalFilterValue(value);
     };
+
     const items = [
         {
             label: 'File',
@@ -55,6 +59,7 @@ export default function RequestList() {
             ]
         }
     ];
+
 
     const handleViewCon = (id) => {
         setId(id);
@@ -72,6 +77,7 @@ export default function RequestList() {
         setVisible(true);
     };
 
+
     const handleClose = () => {
         setState2(false)
         setState1(false)
@@ -88,6 +94,7 @@ export default function RequestList() {
     }
     const handleCloseLoan = () => {
         setState3(false)
+
         setVisibleLoan(false)
     }
     const handlePutRequest = (id) => {
@@ -124,7 +131,7 @@ export default function RequestList() {
             </div>
         );
     };
-       
+
     const checkIfExistLoan = (idRequest) => {
         const found =allLoansOfThisUser.find((r)=>JSON.stringify(r.request._id)==JSON.stringify(idRequest))       
         if (found)
@@ -156,10 +163,13 @@ export default function RequestList() {
         </>)
     }
 
+
+
     const checkStatus = (rowData) => {
       
         return <i className={classNames('pi', { 'text-primary-500 pi-check-circle': rowData.status, 'text-primary-500 pi-times-circle': !rowData.status })}></i>;
     }
+
     const header = renderHeader();
     return (
         <div className="card">

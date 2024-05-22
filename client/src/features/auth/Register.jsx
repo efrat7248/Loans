@@ -32,7 +32,11 @@ export default function Register({ visibleReg, setRegister, handleOpenLogin, rol
     }, [isSuccess, isSuccessUser, isError,isErrorUser])
 
 
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
     const defaultValues = {
         name: '',
         password: '',

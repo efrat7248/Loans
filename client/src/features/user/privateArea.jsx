@@ -12,6 +12,10 @@ import userAuth from '../auth/userAuth'
 import { useUpdateUserItemMutation, useDeleteUserItemMutation } from '../user/userApiSlice'
 import { confirmDialog } from 'primereact/confirmdialog';
 import Confirmation from '../../Components/confirmation';
+<<<<<<< HEAD
+=======
+// import Login from './Login';
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
 export default function PrivateArea({ visibleReg, setRegister, handleOpenLogin, role }) {
     const navigate = useNavigate()
     const [visible, setVisible] = useState(false);
@@ -26,10 +30,20 @@ export default function PrivateArea({ visibleReg, setRegister, handleOpenLogin, 
         email: email || '',
         phone: phone || '',
         address: address || '',
+<<<<<<< HEAD
         role: userRole || role, 
         password: ''
     };
     const handleDeleteUser = async (idus) => {
+=======
+        role: userRole || role, // fallback to prop if no role in user data
+        password: ''
+    };
+    const handleDeleteUser = async (idus) => {
+        // console.log(idL);
+      //  setIdUser(idus)
+        // console.log(idus + " 00000");
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
         await delUserFunc({ id: idus })
         navigate("/")
         setIdUser(null)
@@ -80,7 +94,11 @@ export default function PrivateArea({ visibleReg, setRegister, handleOpenLogin, 
                                 rules={{ required: 'Name is required.' }}
                                 render={({ field, fieldState }) => (
                                     <>
+<<<<<<< HEAD
                                        
+=======
+                                        {/* <label htmlFor={field.name} className={classNames({ 'p-error': errors.value })}></label> */}
+>>>>>>> e12cb346414aa156282bfc96cd7c38786ba5a430
                                         <div style={{ marginTop: '1em' }}>
                                             <span className="p-float-label">
                                                 <InputText id={field.name} value={field.value} text={defaultValues.name} className={classNames({ 'p-invalid': fieldState.error })}
