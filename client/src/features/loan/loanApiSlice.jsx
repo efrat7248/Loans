@@ -46,6 +46,7 @@ const loanApiSlice = apiSlice.injectEndpoints({
                 url: "api/loans/status/"+id,
                 method: "PUT",
            }),        
+
            invalidatesTags:["loans"]
         }),
         updateLoanApproval : build.mutation({

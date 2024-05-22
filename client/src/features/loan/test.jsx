@@ -7,17 +7,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { useRegisterMutation } from '../auth/authApiSlice'
-import { useAddLoanMutation } from "./loanApiSlice";
 import { Password } from 'primereact/password';
-import { Calendar } from 'primereact/calendar';
-import {useGetLoansByUserIdQuery} from '../loan/loanApiSlice'
-import './promissoryNote.css'
-
-
-
-export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) {
+export default function Test({ visibleReg, setRegister }) {
+    const [visible, setVisible] = useState(true);
     const [registerFunc, { isError, isSuccess, isLoading, data, error }] = useRegisterMutation()
-    const [addLoan, { isErrorLoan, isSuccessLoan }] = useAddLoanMutation()
     const navigate = useNavigate()
     useEffect(() => {
         if (isSuccess) {
@@ -25,22 +18,18 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
         }
     }, [isSuccess])
 
-
+    // useEffect(() => {
+    //     setVisible(visibleReg)
+    // }, [visibleReg])
 
     const defaultValues = {
-            sign: '',
-            returnDate: '',
-            nameWeft1: '',
-            emailWeft1: '',
-            phoneWeft1: '',
-            signWeft1: '',
-            nameWeft2: '',
-            emailWeft2: '',
-            phoneWeft2: '',
-            signWeft2: '',
-        };
-    
-    
+        name: '',
+        password: '',
+        identity: '',
+        email: '',
+        phone: '',
+        address: '',
+    };
 
     const {
         control,
@@ -52,15 +41,9 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
     } = useForm({ defaultValues });
 
     const onSubmit = (data) => {
-        const loan = {
-            sign: data.sign,
-            returnDate: data.returnDate,
-            wefts: [{ name: data.nameWeft1, sign: data.signWeft1, email: data.emailWeft1, phone: data.phoneWeft1 },
-            { name: data.nameWeft2, sign: data.signWeft2, email: data.emailWeft2, phone: data.phoneWeft2 }],
-            request:idLoan
-        }
-        addLoan(loan)
-        handleCloseLoan(false)
+        console.log(data);
+        registerFunc(data)
+        reset();
     };
 
     console.log(watch("example"));
@@ -69,17 +52,11 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
     const getFormErrorMessage = (name) => {
         return errors[name] ? <small className="p-error">{errors[name].message}</small> : <small className="p-error">&nbsp;</small>;
     };
+    // Inline CSS for the layout
     const formContainerStyle = {
         display: 'grid',
-        gridTemplateColumns: '1fr',
-        gap: '20px',
-        '@media (min-width: 800px)': {
-            gridTemplateColumns: 'repeat(3, 1fr)', 
-        },
-        '@media (max-width: 1000)': {
-            gridTemplateColumns: '1fr', 
-        },
-
+        gridTemplateColumns: 'repeat(3, 1fr)', // Creates three columns of equal width
+        gap: '20px', // Adjust the gap between columns as needed
     };
 
     const columnStyle = {
@@ -87,21 +64,20 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
         flexDirection: 'column',
     };
     const dialogContentStyle = {
-        maxHeight: '400px', 
-        overflowY: 'auto', 
+        maxHeight: '400px', // Adjust this value as needed
+        overflowY: 'auto', // Enable vertical scrolling
     };
     return (
         <div className="card flex justify-content-center">
+            {console.log(visible)}
             <Dialog
-                visible={visibleLoan}
+                visible={visible}
                 modal
-                onHide={() => handleCloseLoan(false)}
-                style={{ width: '35vw', minWidth: '35vw'}}
-                contentStyle={{ maxHeight: 'calc(150 - 200px)', overflowY: 'auto' }}
-                >
-                    <div className="flex flex-column px-8 py-5 gap-4" contentStyle={dialogContentStyle} style={{ borderRadius: '12px', backgroundImage: 'radial-gradient(circle at left top, var(--primary-400), var(--primary-700))', textAlign: 'center'}}>
+                onHide={() => setRegister(false)}
+                content={({ hide }) => (
+                    <div className="flex flex-column px-8 py-5 gap-4" contentStyle={dialogContentStyle} style={{ borderRadius: '12px', width: '50vw', backgroundImage: 'radial-gradient(circle at left top, var(--primary-400), var(--primary-700))', textAlign: 'center' }}>
 
-                        <Button label="Promissory Note" icon="pi pi-book" />
+                        <Button label="Register" icon="pi pi-user-plus" />
 
                         <div className="inline-flex flex-column gap-2">
                             <div className="card flex justify-content-center">
@@ -146,13 +122,9 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
                                                             <span className="p-float-label">
                                                                 <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })}
                                                                     onChange={(e) => field.onChange(e.target.value)}
-                                                                    {...register("emailWeft1", {
-                                                                        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                    })} />
+                                                                    aria-invalid={errors.mail ? "true" : "false"} />
                                                                 <label htmlFor={field.name} style={{ marginLeft: '1em' }}>Email</label>
-                                                                {errors?.emailWeft1?.type === "pattern" && (
-                                                            <p> Please enter a valid email address </p>)}
-
+                                                                {errors.emailWeft1 && <p role="alert">{errors.emailWeft1.message}</p>}
                                                             </span>
                                                         </div>
                                                         {getFormErrorMessage(field.name)}
@@ -256,12 +228,9 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
                                                             <span className="p-float-label">
                                                                 <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })}
                                                                     onChange={(e) => field.onChange(e.target.value)}
-                                                                    {...register("emailWeft2", {
-                                                                        pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                                    })}/>
+                                                                    aria-invalid={errors.mail ? "true" : "false"} />
                                                                 <label htmlFor={field.name} style={{ marginLeft: '1em' }}>Email</label>
-                                                                {errors?.emailWeft2?.type === "pattern" && (<p> Please enter a valid email address </p>)}
-
+                                                                {errors.emailWeft2 && <p role="alert">{errors.emailWeft2.message}</p>}
                                                             </span>
                                                         </div>
                                                         {getFormErrorMessage(field.name)}
@@ -330,16 +299,18 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
                                         <label style={{ marginBottom: '1em' }}>Add return date and sign:</label>
 
                                             <Controller
-                                                name="returnDate"
+                                                name="email"
                                                 control={control}
                                                 render={({ field, fieldState }) => (
                                                     <>
                                                         <label htmlFor={field.name} className={classNames({ 'p-error': errors.value })}></label>
                                                         <div style={{ marginTop: '1em' }}>
                                                             <span className="p-float-label">
-                                                           
-                                                            <Calendar value={field.value} className={classNames({ 'p-invalid': fieldState.error })}
-                                                                onChange={(e) => field.onChange(e.target.value)} dateFormat="dd/mm/yy"/>
+                                                                <InputText id={field.name} value={field.value} className={classNames({ 'p-invalid': fieldState.error })}
+                                                                    onChange={(e) => field.onChange(e.target.value)}
+                                                                    aria-invalid={errors.mail ? "true" : "false"} />
+                                                                <label htmlFor={field.name} style={{ marginLeft: '1em' }}>Email</label>
+                                                                {errors.mail && <p role="alert">{errors.mail.message}</p>}
                                                             </span>
                                                         </div>
                                                         {getFormErrorMessage(field.name)}
@@ -377,16 +348,15 @@ export default function PromissoryNote({ visibleLoan, handleCloseLoan ,idLoan}) 
                                         </div>
                                     </div>
                                     <div>
-                                        <Button label="Save" type="submit" style={{ marginRight: '1em', marginTop: '2em' }} />
-                                        <Button label="Cancel" type="submit" onClick={(e) => { handleCloseLoan(false) }}  ></Button>
-
+                                        <Button label="Sign-Up" type="submit" style={{ marginRight: '1em', marginTop: '2em' }} />
+                                        <Button label="Cancel" type="submit" onClick={(e) => { hide(e) }}  ></Button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div >
-            
-            </Dialog >
+                )}
+            ></Dialog >
         </div >
     )
 }

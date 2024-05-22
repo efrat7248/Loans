@@ -13,6 +13,7 @@ import { useUpdateUserItemMutation, useDeleteUserItemMutation } from '../user/us
 import { confirmDialog } from 'primereact/confirmdialog';
 import Confirmation from '../../Components/confirmation';
 
+
 export default function PrivateArea({ visibleReg, setRegister, handleOpenLogin, role }) {
     const navigate = useNavigate()
     const [visible, setVisible] = useState(false);
@@ -32,7 +33,6 @@ export default function PrivateArea({ visibleReg, setRegister, handleOpenLogin, 
         password: ''
     };
     const handleDeleteUser = async (idus) => {
-
         await delUserFunc({ id: idus })
         navigate("/")
         setIdUser(null)

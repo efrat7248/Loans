@@ -22,7 +22,6 @@ export default function ShowWefts({ setRowD, wefts, idLoan, dialogVisible, setDi
         }
     }, [valuePhone]);
 
-
     const dialogFooterTemplate = () => {
         return <Button label="Ok" icon="pi pi-check" onClick={() => { setDialogVisible() }} />;
     };
@@ -108,6 +107,7 @@ modal contentStyle={{ height: '300px' }} onHide={() => setDialogVisible(false)} 
                     <Column field="phone" header="Phone" editor={(options) => phoneEditor(options)} style={{ width: '20%' }}></Column>
                     <Column field="updatedAt" header="UpdatedAt" style={{ width: '20%' }}></Column>
                     {role ? <Column rowEditor={true} headerStyle={{ width: '10%', minWidth: '8rem' }} bodyStyle={{ textAlign: 'center' }}></Column> : null}
+
                 </DataTable>
             </Dialog>
         </div>
