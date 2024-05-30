@@ -211,7 +211,7 @@ export default function ListLoanManeger() {
             {rowDataState ?
                 <OverlayPanel ref={op} >
                     {console.log(`http://localhost:1300/uploads/${(rowDataState.img).split("\\")[2]}`)}
-                    <Image src={`http://localhost:1300/uploads/${(rowDataState.img).split("\\")[2]}`} indicatorIcon={icon} alt="Image" preview width="250" style={{ maxHeight: "20rem", minHeight: "20rem", maxWidth: "18rem", minWidth: "18rem" }}></Image>
+                    <Image src={`http://localhost:1300/uploads/${(rowDataState.img).split("\\")[2]}`} indicatorIcon={icon} alt="Image" preview width="400rem" style={{ maxHeight: "14rem", minHeight: "14rem", maxWidth: "29rem", minWidth: "29rem" }}></Image>
                 </OverlayPanel>
                 : <></>}
             <OverlayPanel ref={ms}>

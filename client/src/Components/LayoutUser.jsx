@@ -100,9 +100,6 @@ const navigate = useNavigate()
           <p>TiferetShlomo@gmail.com גמ"ח תפארת שלמה </p>
         </div>
       </StyledFooter>
-
-        <Outlet/>
-
         </>
     )
 }
